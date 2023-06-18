@@ -24,7 +24,6 @@ services:
       env: static
       name: fp-prod-frontend1
       repo: https://github.com/ShamanthOP/forms_processor.git
-      plan: free
       buildFilter:
           paths:
               - apps/frontend/**
