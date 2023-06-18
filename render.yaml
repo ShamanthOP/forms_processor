@@ -4,7 +4,7 @@ services:
       name: fp-prod-backend1
       repo: https://github.com/ShamanthOP/forms_processor.git
       buildFilter:
-          path:
+          paths:
               - apps/backend/**
       buildCommand: npm install && npm run build --filter=backend
       startCommand: cd app/backend; npm run start
@@ -17,6 +17,7 @@ services:
           - key: REDIS_URL
             fromService:
                 name: fp-prod-redis1
+                type: redis
                 property: connectionString
 
     - type: web
@@ -25,7 +26,7 @@ services:
       repo: https://github.com/ShamanthOP/forms_processor.git
       plan: free
       buildFilter:
-          path:
+          paths:
               - apps/frontend/**
       buildCommand: npm install && npm run build --filter=frontend
       staticPublishPath: ./apps/frontend/build
@@ -43,6 +44,7 @@ services:
     - type: redis
       name: fp-prod-redis1
       plan: free
+      ipAllowList: []
 
 databases:
     - name: fp-prod-db1
