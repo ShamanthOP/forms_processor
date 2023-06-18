@@ -1,0 +1,26 @@
+services:
+    postgres:
+        image: postgres:15-alpine
+        ports:
+            - 5432:5432
+        environment:
+            POSTGRES_DB: webapp_dev
+            POSTGRES_HOST_AUTH_METHOD: trust
+    redis:
+        image: redis:6.2.5-alpine
+    backend:
+        build:
+            context: .
+            dockerfile: ./apps/backend/Dockerfile
+        ports:
+            - 8000:8000
+            - 9229:9229 # for debugging
+        volumes:
+            - ./apps/backend:/app/apps/backend
+            - /app/apps/backend/node_modules
+        command: npm run start:docker
+        depends_on: [postgres]
+        environment:
+            DATABASE_URL: postgres://postgres@postgres/webapp_dev
+            PORT: 8000
+            REDIS_HOST: redis
