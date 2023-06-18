@@ -6,7 +6,7 @@ services:
       buildFilter:
           paths:
               - apps/backend/**
-      buildCommand: npm install && cd apps/backend && npm install && cd ../../ && npm run build:backend && cd apps/backend && npm run db:migrate && cd../../
+      buildCommand: npm install && cd apps/backend && npm install && cd ../../ && npm run build:backend && cd apps/backend && npm run db:migrate && cd ../../
       startCommand: cd apps/backend; npm run start
       plan: free
       envVars:
