@@ -4,7 +4,7 @@ import DashBoard from "./screens/DashBoard";
 
 const URL = process.env.GRAPHQL_HOST
     ? `https://${process.env.GRAPHQL_HOST}.onrender.com/graphql`
-    : "http://localhost:8000/graphql";
+    : "https://fp-prod-backend1.onrender.com/graphql";
 
 const client = new ApolloClient({
     uri: URL,
