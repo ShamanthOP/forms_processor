@@ -7,7 +7,7 @@ services:
           paths:
               - apps/backend/**
       buildCommand: npm install && npm run build --filter=backend
-      startCommand: cd app/backend; npm run start
+      startCommand: cd apps/backend; npm run start
       plan: free
       envVars:
           - key: DATABASE_URL
